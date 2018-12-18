@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZophopWeb", "ZophopWeb\ZophopWeb.csproj", "{D03EF05D-68C9-42A4-A4AB-C7C61785EDCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D03EF05D-68C9-42A4-A4AB-C7C61785EDCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03EF05D-68C9-42A4-A4AB-C7C61785EDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03EF05D-68C9-42A4-A4AB-C7C61785EDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03EF05D-68C9-42A4-A4AB-C7C61785EDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

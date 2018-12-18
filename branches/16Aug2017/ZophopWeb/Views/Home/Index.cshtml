@@ -1,0 +1,31 @@
+﻿<br /><br />
+<h4>Login</h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        <div style="color: red; margin-bottom: 15px;">@ViewBag.Message</div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="txtUsername">Username:</label>
+            <div class="col-md-10">
+                <input type="text" id="txUsername" name="txtUsername" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="txtPassword">Password:</label>
+            <div class="col-md-10">
+                <input type="password" id="txtPassword" name="txtPassword" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

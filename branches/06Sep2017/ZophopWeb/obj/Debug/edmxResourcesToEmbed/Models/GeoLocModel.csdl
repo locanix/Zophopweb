@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="geolocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="point">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Nullable="false" Type="Int64" />
+    <Property Name="Time" Nullable="false" Type="Int64" />
+    <Property Name="Lng" Nullable="false" Type="Single" />
+    <Property Name="Lat" Nullable="false" Type="Single" />
+    <Property Name="Status" Nullable="false" Type="Int64" />
+    <Property Name="speed" Nullable="false" Type="Int32" />
+    <Property Name="Alt" Nullable="false" Type="Int16" />
+    <Property Name="IO" MaxLength="Max" FixedLength="false" Type="Binary" />
+    <Property Name="GSMInfo" Nullable="false" Type="Decimal" />
+    <Property Name="Send" Nullable="false" Type="Int64" />
+    <NavigationProperty Name="tracker" Relationship="Self.FK_points_1" FromRole="points" ToRole="trackers" />
+  </EntityType>
+  <EntityType Name="tracker">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+    <Property Name="UserID" Nullable="false" Type="Int64" />
+    <Property Name="IMEI" Type="Int64" />
+    <Property Name="Name" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Comment" Nullable="false" MaxLength="135" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="IconID" Nullable="false" Type="Int64" />
+    <Property Name="HistoryColor" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Period" Nullable="false" Type="Int64" />
+    <Property Name="SleepPeriod" Nullable="false" Type="Int64" />
+    <Property Name="Phone" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="ParkRadius" Nullable="false" Type="Int64" />
+    <Property Name="MinParkTime" Nullable="false" Type="Int64" />
+    <Property Name="DaysToStore" Nullable="false" Type="Int64" />
+    <Property Name="Enable" Nullable="false" Type="Boolean" />
+    <Property Name="Number" Nullable="false" Type="Int64" />
+    <Property Name="MaxSpeed" Nullable="false" Type="Int64" />
+    <Property Name="AlarmParkTime" Nullable="false" Type="Int64" />
+    <Property Name="DeviceType" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="FuelExpenseHr" Nullable="false" Type="Single" />
+    <Property Name="CreateDate" Nullable="false" Type="Int64" />
+    <Property Name="InstallDate" Nullable="false" Type="Int64" />
+    <Property Name="StateNumber" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="InstallerName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="MinIdleTime" Nullable="false" Type="Int64" />
+    <Property Name="MinDrain" Nullable="false" Type="Single" />
+    <Property Name="Flags" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="servergroup" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+    <NavigationProperty Name="points" Relationship="Self.FK_points_1" FromRole="trackers" ToRole="points" />
+  </EntityType>
+  <Association Name="FK_points_1">
+    <End Type="Self.tracker" Multiplicity="1" Role="trackers">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Self.point" Multiplicity="*" Role="points" />
+    <ReferentialConstraint>
+      <Principal Role="trackers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="points">
+        <PropertyRef Name="TrackerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="geolocEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="points" EntityType="Self.point" />
+    <EntitySet Name="trackers" EntityType="Self.tracker" />
+    <AssociationSet Name="FK_points_1" Association="Self.FK_points_1">
+      <End EntitySet="trackers" Role="trackers" />
+      <End EntitySet="points" Role="points" />
+    </AssociationSet>
+    <EntitySet Name="trackerlastlocations" EntityType="geolocModel.trackerlastlocation" />
+  </EntityContainer>
+  <EntityType Name="trackerlastlocation">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Nullable="false" Type="Int64" />
+    <Property Name="IMEI" Nullable="false" Type="Int64" />
+    <Property Name="Name" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Servergroup" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Time" Nullable="false" Type="Int64" />
+    <Property Name="Lng" Nullable="false" Type="Single" />
+    <Property Name="Lat" Nullable="false" Type="Single" />
+    <Property Name="Status" Nullable="false" Type="Int64" />
+    <Property Name="Speed" Nullable="false" Type="Int32" />
+    <Property Name="Alt" Nullable="false" Type="Int16" />
+    <Property Name="GSMInfo" Nullable="false" Type="Decimal" />
+    <Property Name="Send" Nullable="false" Type="Int64" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="geolocModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="points">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Nullable="false" Type="uint" />
+    <Property Name="Time" Nullable="false" Type="uint" />
+    <Property Name="Lng" Nullable="false" Type="float" />
+    <Property Name="Lat" Nullable="false" Type="float" />
+    <Property Name="Status" Nullable="false" Type="uint" />
+    <Property Name="speed" Nullable="false" Type="usmallint" />
+    <Property Name="Alt" Nullable="false" Type="smallint" />
+    <Property Name="IO" Type="blob" />
+    <Property Name="GSMInfo" Nullable="false" Type="ubigint" />
+    <Property Name="Send" Nullable="false" Type="uint" />
+  </EntityType>
+  <EntityType Name="trackerlastlocation">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Nullable="false" Type="uint" />
+    <Property Name="IMEI" Nullable="false" Type="bigint" />
+    <Property Name="Name" Nullable="false" MaxLength="45" Type="varchar" />
+    <Property Name="Servergroup" Nullable="false" MaxLength="128" Type="varchar" />
+    <Property Name="Time" Nullable="false" Type="uint" />
+    <Property Name="Lng" Nullable="false" Type="float" />
+    <Property Name="Lat" Nullable="false" Type="float" />
+    <Property Name="Status" Nullable="false" Type="uint" />
+    <Property Name="Speed" Nullable="false" Type="usmallint" />
+    <Property Name="Alt" Nullable="false" Type="smallint" />
+    <Property Name="GSMInfo" Nullable="false" Type="ubigint" />
+    <Property Name="Send" Nullable="false" Type="uint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'def.geoloc.trackers' in the table 'FuelExpense' was excluded.-->
+  <EntityType Name="trackers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="uint" />
+    <Property Name="UserID" Nullable="false" Type="uint" />
+    <Property Name="IMEI" Type="bigint" />
+    <Property Name="Name" Nullable="false" MaxLength="45" Type="varchar" />
+    <Property Name="Comment" Nullable="false" MaxLength="135" Type="varchar" />
+    <Property Name="IconID" Nullable="false" Type="uint" />
+    <Property Name="HistoryColor" Nullable="false" MaxLength="10" Type="varchar" />
+    <Property Name="Period" Nullable="false" Type="uint" />
+    <Property Name="SleepPeriod" Nullable="false" Type="uint" />
+    <Property Name="Phone" Nullable="false" MaxLength="45" Type="varchar" />
+    <Property Name="ParkRadius" Nullable="false" Type="uint" />
+    <Property Name="MinParkTime" Nullable="false" Type="uint" />
+    <Property Name="DaysToStore" Nullable="false" Type="uint" />
+    <Property Name="Enable" Nullable="false" Type="bool" />
+    <Property Name="Number" Nullable="false" Type="uint" />
+    <Property Name="MaxSpeed" Nullable="false" Type="uint" />
+    <Property Name="AlarmParkTime" Nullable="false" Type="uint" />
+    <Property Name="DeviceType" Nullable="false" MaxLength="100" Type="varchar" />
+    <Property Name="FuelExpenseHr" Nullable="false" Type="float" />
+    <Property Name="CreateDate" Nullable="false" Type="uint" />
+    <Property Name="InstallDate" Nullable="false" Type="uint" />
+    <Property Name="StateNumber" Nullable="false" MaxLength="45" Type="varchar" />
+    <Property Name="InstallerName" Nullable="false" MaxLength="128" Type="varchar" />
+    <Property Name="MinIdleTime" Nullable="false" Type="uint" />
+    <Property Name="MinDrain" Nullable="false" Type="float" />
+    <Property Name="Flags" Nullable="false" MaxLength="100" Type="varchar" />
+    <Property Name="servergroup" Nullable="false" MaxLength="128" Type="varchar" />
+  </EntityType>
+  <Association Name="FK_points_1">
+    <End Type="Self.trackers" Multiplicity="1" Role="trackers">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Self.points" Multiplicity="*" Role="points" />
+    <ReferentialConstraint>
+      <Principal Role="trackers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="points">
+        <PropertyRef Name="TrackerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="geolocModelStoreContainer">
+    <EntitySet Name="points" EntityType="Self.points" Schema="geoloc" store:Type="Tables" />
+    <EntitySet Name="trackerlastlocation" EntityType="Self.trackerlastlocation" Schema="geoloc" store:Type="Tables" />
+    <EntitySet Name="trackers" EntityType="Self.trackers" Schema="geoloc" store:Type="Tables" />
+    <AssociationSet Name="FK_points_1" Association="Self.FK_points_1">
+      <End EntitySet="trackers" Role="trackers" />
+      <End EntitySet="points" Role="points" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

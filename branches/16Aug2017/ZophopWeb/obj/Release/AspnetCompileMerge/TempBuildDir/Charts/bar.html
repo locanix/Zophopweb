@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<title>Bar Chart</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="../Chart.js"></script>	
+    <script src="Chart.js"></script>
+</head>
+
+<body>
+	<div style="width: 30%">
+		<canvas id="canvas" height="300" width="400"></canvas>
+	</div>
+
+
+	<script type="text/javascript">
+		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var outstadings = [];
+		var duedates = [];
+
+		$.get("http://localhost:3823/Home/GetOutstanding", function (result) {
+            for (var c in result) {
+					//outstadings[c] = result[c].Outstanding;
+					var value = result[c].DueDate;
+					value = value.replace("\/Date(","");
+					value = value.replace(")\/","");
+
+					var d = new Date(parseInt(value));
+					var date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+
+					duedates[c] = date;
+					outstadings[c] = result[c].Amount;
+            }
+        });
+
+		alert(outstadings);
+
+	var barChartData = {
+		labels : duedates,
+		datasets : [
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,0.8)",
+				highlightFill : "rgba(151,187,205,0.75)",
+				highlightStroke : "rgba(151,187,205,1)",
+				data : outstadings
+			}
+		]
+
+	}
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barChartData, {
+			responsive : true
+		});
+	}
+	</script>
+</body>
+
+</html>

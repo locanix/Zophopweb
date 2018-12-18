@@ -1,0 +1,50 @@
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll.config
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.pdb
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Antlr3.Runtime.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\EntityFramework.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Microsoft.Web.Infrastructure.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Newtonsoft.Json.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Helpers.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Mvc.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Optimization.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Razor.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Deployment.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Razor.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\WebGrease.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\EntityFramework.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Helpers.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Mvc.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Optimization.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Razor.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Deployment.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Razor.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Newtonsoft.Json.xml
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Antlr3.Runtime.pdb
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.csprojResolveAssemblyReference.cache
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.dll
+E:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.pdb
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll.config
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\ZophopWeb.pdb
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\EntityFramework.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Helpers.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Mvc.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Optimization.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.Razor.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Deployment.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\System.Web.WebPages.Razor.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Newtonsoft.Json.xml
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\bin\Antlr3.Runtime.pdb
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.dll
+D:\Satish Bajpai\Project\Locanix\Apps\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.pdb
+E:\Projects\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll.config
+E:\Projects\ZophopWeb\ZophopWeb\bin\ZophopWeb.dll
+E:\Projects\ZophopWeb\ZophopWeb\bin\ZophopWeb.pdb
+E:\Projects\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.dll
+E:\Projects\ZophopWeb\ZophopWeb\obj\Debug\ZophopWeb.pdb
+E:\Projects\ZophopWeb\ZophopWeb\bin\EntityFramework.SqlServer.dll
+E:\Projects\ZophopWeb\ZophopWeb\bin\EntityFramework.SqlServer.xml

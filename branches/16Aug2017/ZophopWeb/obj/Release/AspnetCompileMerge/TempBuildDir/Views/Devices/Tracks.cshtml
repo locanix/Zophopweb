@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ZophopWeb.Models.point>
+
+<br />
+<h3>Device Data Points</h3>
+<br />
+<h5>(Latest 20 Data Points)</h5>
+
+<p>
+    @Html.ActionLink("[Back]", "Index") |
+    @Html.ActionLink("[Refresh]", "Tracks", new { id = ViewBag.DeviceId })
+</p>
+<table class="table">
+    <tr>
+        <th>Vehicle Number</th>
+        <th>Time</th>
+        <th>Epoch Time</th>        
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Speed</th>
+        <th>Forwarded</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tracker.Name)
+        </td>
+        <td>
+            @{var dt = (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddSeconds(item.Time).ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss");}
+            @dt
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Lat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.speed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Send)
+        </td>
+    </tr>
+}
+
+</table>

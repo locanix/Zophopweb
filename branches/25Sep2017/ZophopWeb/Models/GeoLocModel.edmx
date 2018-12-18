@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="geolocModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="curpos">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+          </Key>
+          <Property Name="TrackerID" Type="uint" Nullable="false" />
+          <Property Name="Time" Type="uint" Nullable="false" />
+          <Property Name="Lng" Type="float" Nullable="false" />
+          <Property Name="Lat" Type="float" Nullable="false" />
+          <Property Name="Status" Type="uint" Nullable="false" />
+          <Property Name="Speed" Type="usmallint" Nullable="false" />
+          <Property Name="Alt" Type="smallint" Nullable="false" />
+          <Property Name="IO" Type="blob" />
+          <Property Name="online" Type="bool" Nullable="false" />
+          <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="points">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="TrackerID" Type="uint" Nullable="false" />
+          <Property Name="Time" Type="uint" Nullable="false" />
+          <Property Name="Lng" Type="float" Nullable="false" />
+          <Property Name="Lat" Type="float" Nullable="false" />
+          <Property Name="Status" Type="uint" Nullable="false" />
+          <Property Name="speed" Type="usmallint" Nullable="false" />
+          <Property Name="Alt" Type="smallint" Nullable="false" />
+          <Property Name="IO" Type="blob" />
+          <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+          <Property Name="Send" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="trackerlastlocation">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="TrackerID" Type="uint" Nullable="false" />
+          <Property Name="IMEI" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Servergroup" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Time" Type="uint" Nullable="false" />
+          <Property Name="Lng" Type="float" Nullable="false" />
+          <Property Name="Lat" Type="float" Nullable="false" />
+          <Property Name="Status" Type="uint" Nullable="false" />
+          <Property Name="Speed" Type="usmallint" Nullable="false" />
+          <Property Name="Alt" Type="smallint" Nullable="false" />
+          <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+          <Property Name="Send" Type="uint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'def.geoloc.trackers' in the table 'FuelExpense' was excluded.-->
+        <EntityType Name="trackers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="uint" Nullable="false" />
+          <Property Name="IMEI" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="135" Nullable="false" />
+          <Property Name="IconID" Type="uint" Nullable="false" />
+          <Property Name="HistoryColor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Period" Type="uint" Nullable="false" />
+          <Property Name="SleepPeriod" Type="uint" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ParkRadius" Type="uint" Nullable="false" />
+          <Property Name="MinParkTime" Type="uint" Nullable="false" />
+          <Property Name="DaysToStore" Type="uint" Nullable="false" />
+          <Property Name="Enable" Type="bool" Nullable="false" />
+          <Property Name="Number" Type="uint" Nullable="false" />
+          <Property Name="MaxSpeed" Type="uint" Nullable="false" />
+          <Property Name="AlarmParkTime" Type="uint" Nullable="false" />
+          <Property Name="DeviceType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FuelExpenseHr" Type="float" Nullable="false" />
+          <Property Name="CreateDate" Type="uint" Nullable="false" />
+          <Property Name="InstallDate" Type="uint" Nullable="false" />
+          <Property Name="StateNumber" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="InstallerName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="MinIdleTime" Type="uint" Nullable="false" />
+          <Property Name="MinDrain" Type="float" Nullable="false" />
+          <Property Name="Flags" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MinDrainSpeed" Type="float" Nullable="false" />
+          <Property Name="servergroup" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_curpos_1">
+          <End Role="trackers" Type="Self.trackers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="curpos" Type="Self.curpos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="trackers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curpos">
+              <PropertyRef Name="TrackerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_points_1">
+          <End Role="trackers" Type="Self.trackers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="points" Type="Self.points" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trackers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="points">
+              <PropertyRef Name="TrackerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="geolocModelStoreContainer">
+          <EntitySet Name="curpos" EntityType="Self.curpos" Schema="geoloc" store:Type="Tables" />
+          <EntitySet Name="points" EntityType="Self.points" Schema="geoloc" store:Type="Tables" />
+          <EntitySet Name="trackerlastlocation" EntityType="Self.trackerlastlocation" Schema="geoloc" store:Type="Tables" />
+          <EntitySet Name="trackers" EntityType="Self.trackers" Schema="geoloc" store:Type="Tables" />
+          <AssociationSet Name="FK_curpos_1" Association="Self.FK_curpos_1">
+            <End Role="trackers" EntitySet="trackers" />
+            <End Role="curpos" EntitySet="curpos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_points_1" Association="Self.FK_points_1">
+            <End Role="trackers" EntitySet="trackers" />
+            <End Role="points" EntitySet="points" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="geolocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="point">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="TrackerID" Nullable="false" Type="Int64" />
+          <Property Name="Time" Nullable="false" Type="Int64" />
+          <Property Name="Lng" Nullable="false" Type="Single" />
+          <Property Name="Lat" Nullable="false" Type="Single" />
+          <Property Name="Status" Nullable="false" Type="Int64" />
+          <Property Name="speed" Nullable="false" Type="Int32" />
+          <Property Name="Alt" Nullable="false" Type="Int16" />
+          <Property Name="IO" MaxLength="Max" FixedLength="false" Type="Binary" />
+          <Property Name="GSMInfo" Nullable="false" Type="Decimal" />
+          <Property Name="Send" Nullable="false" Type="Int64" />
+          <NavigationProperty Name="tracker" Relationship="Self.FK_points_1" FromRole="points" ToRole="trackers" />
+        </EntityType>
+        <EntityType Name="tracker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="UserID" Nullable="false" Type="Int64" />
+          <Property Name="IMEI" Type="Int64" />
+          <Property Name="Name" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Comment" Nullable="false" MaxLength="135" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="IconID" Nullable="false" Type="Int64" />
+          <Property Name="HistoryColor" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Period" Nullable="false" Type="Int64" />
+          <Property Name="SleepPeriod" Nullable="false" Type="Int64" />
+          <Property Name="Phone" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ParkRadius" Nullable="false" Type="Int64" />
+          <Property Name="MinParkTime" Nullable="false" Type="Int64" />
+          <Property Name="DaysToStore" Nullable="false" Type="Int64" />
+          <Property Name="Enable" Nullable="false" Type="Boolean" />
+          <Property Name="Number" Nullable="false" Type="Int64" />
+          <Property Name="MaxSpeed" Nullable="false" Type="Int64" />
+          <Property Name="AlarmParkTime" Nullable="false" Type="Int64" />
+          <Property Name="DeviceType" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="FuelExpenseHr" Nullable="false" Type="Single" />
+          <Property Name="CreateDate" Nullable="false" Type="Int64" />
+          <Property Name="InstallDate" Nullable="false" Type="Int64" />
+          <Property Name="StateNumber" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="InstallerName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MinIdleTime" Nullable="false" Type="Int64" />
+          <Property Name="MinDrain" Nullable="false" Type="Single" />
+          <Property Name="Flags" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="servergroup" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="points" Relationship="Self.FK_points_1" FromRole="trackers" ToRole="points" />
+          <Property Name="MinDrainSpeed" Type="Single" Nullable="false" />
+          <NavigationProperty Name="curpos" Relationship="geolocModel.FK_curpos_1" FromRole="tracker" ToRole="curpos" />
+        </EntityType>
+        <Association Name="FK_points_1">
+          <End Type="Self.tracker" Multiplicity="1" Role="trackers">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.point" Multiplicity="*" Role="points" />
+          <ReferentialConstraint>
+            <Principal Role="trackers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="points">
+              <PropertyRef Name="TrackerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="geolocEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="points" EntityType="Self.point" />
+          <EntitySet Name="trackers" EntityType="Self.tracker" />
+          <AssociationSet Name="FK_points_1" Association="Self.FK_points_1">
+            <End EntitySet="trackers" Role="trackers" />
+            <End EntitySet="points" Role="points" />
+          </AssociationSet>
+          <EntitySet Name="curpos" EntityType="geolocModel.curpos" />
+          <AssociationSet Name="FK_curpos_1" Association="geolocModel.FK_curpos_1">
+            <End Role="tracker" EntitySet="trackers" />
+            <End Role="curpos" EntitySet="curpos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="curpos">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+          </Key>
+          <Property Name="TrackerID" Type="Int64" Nullable="false" />
+          <Property Name="Time" Type="Int64" Nullable="false" />
+          <Property Name="Lng" Type="Single" Nullable="false" />
+          <Property Name="Lat" Type="Single" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="Speed" Type="Int32" Nullable="false" />
+          <Property Name="Alt" Type="Int16" Nullable="false" />
+          <Property Name="IO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="online" Type="Boolean" Nullable="false" />
+          <Property Name="GSMInfo" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="tracker" Relationship="geolocModel.FK_curpos_1" FromRole="curpos" ToRole="tracker" />
+        </EntityType>
+        <Association Name="FK_curpos_1">
+          <End Type="geolocModel.tracker" Role="tracker" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="geolocModel.curpos" Role="curpos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tracker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curpos">
+              <PropertyRef Name="TrackerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="geolocModelStoreContainer" CdmEntityContainer="geolocEntities">
+          <EntitySetMapping Name="points">
+            <EntityTypeMapping TypeName="geolocModel.point">
+              <MappingFragment StoreEntitySet="points">
+                <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="Alt" ColumnName="Alt" />
+                <ScalarProperty Name="IO" ColumnName="IO" />
+                <ScalarProperty Name="GSMInfo" ColumnName="GSMInfo" />
+                <ScalarProperty Name="Send" ColumnName="Send" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trackers">
+            <EntityTypeMapping TypeName="geolocModel.tracker">
+              <MappingFragment StoreEntitySet="trackers">
+                <ScalarProperty Name="MinDrainSpeed" ColumnName="MinDrainSpeed" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IconID" ColumnName="IconID" />
+                <ScalarProperty Name="HistoryColor" ColumnName="HistoryColor" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="SleepPeriod" ColumnName="SleepPeriod" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ParkRadius" ColumnName="ParkRadius" />
+                <ScalarProperty Name="MinParkTime" ColumnName="MinParkTime" />
+                <ScalarProperty Name="DaysToStore" ColumnName="DaysToStore" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="MaxSpeed" ColumnName="MaxSpeed" />
+                <ScalarProperty Name="AlarmParkTime" ColumnName="AlarmParkTime" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="FuelExpenseHr" ColumnName="FuelExpenseHr" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="StateNumber" ColumnName="StateNumber" />
+                <ScalarProperty Name="InstallerName" ColumnName="InstallerName" />
+                <ScalarProperty Name="MinIdleTime" ColumnName="MinIdleTime" />
+                <ScalarProperty Name="MinDrain" ColumnName="MinDrain" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="servergroup" ColumnName="servergroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curpos">
+            <EntityTypeMapping TypeName="geolocModel.curpos">
+              <MappingFragment StoreEntitySet="curpos">
+                <ScalarProperty Name="GSMInfo" ColumnName="GSMInfo" />
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="IO" ColumnName="IO" />
+                <ScalarProperty Name="Alt" ColumnName="Alt" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

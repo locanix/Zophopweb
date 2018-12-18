@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="geolocModelStoreContainer" CdmEntityContainer="geolocEntities">
+    <EntitySetMapping Name="points">
+      <EntityTypeMapping TypeName="geolocModel.point">
+        <MappingFragment StoreEntitySet="points">
+          <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="speed" ColumnName="speed" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+          <ScalarProperty Name="IO" ColumnName="IO" />
+          <ScalarProperty Name="GSMInfo" ColumnName="GSMInfo" />
+          <ScalarProperty Name="Send" ColumnName="Send" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trackers">
+      <EntityTypeMapping TypeName="geolocModel.tracker">
+        <MappingFragment StoreEntitySet="trackers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IconID" ColumnName="IconID" />
+          <ScalarProperty Name="HistoryColor" ColumnName="HistoryColor" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="SleepPeriod" ColumnName="SleepPeriod" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ParkRadius" ColumnName="ParkRadius" />
+          <ScalarProperty Name="MinParkTime" ColumnName="MinParkTime" />
+          <ScalarProperty Name="DaysToStore" ColumnName="DaysToStore" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="MaxSpeed" ColumnName="MaxSpeed" />
+          <ScalarProperty Name="AlarmParkTime" ColumnName="AlarmParkTime" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="FuelExpenseHr" ColumnName="FuelExpenseHr" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+          <ScalarProperty Name="StateNumber" ColumnName="StateNumber" />
+          <ScalarProperty Name="InstallerName" ColumnName="InstallerName" />
+          <ScalarProperty Name="MinIdleTime" ColumnName="MinIdleTime" />
+          <ScalarProperty Name="MinDrain" ColumnName="MinDrain" />
+          <ScalarProperty Name="Flags" ColumnName="Flags" />
+          <ScalarProperty Name="servergroup" ColumnName="servergroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trackerlastlocations">
+      <EntityTypeMapping TypeName="geolocModel.trackerlastlocation">
+        <MappingFragment StoreEntitySet="trackerlastlocation">
+          <ScalarProperty Name="Send" ColumnName="Send" />
+          <ScalarProperty Name="GSMInfo" ColumnName="GSMInfo" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Servergroup" ColumnName="Servergroup" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

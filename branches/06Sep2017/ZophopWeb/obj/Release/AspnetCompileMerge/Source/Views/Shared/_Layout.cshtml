@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locanix</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0068B5 !important; border-color: #0068B5 !important; max-height:35px !important; ">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("Index", "Dashboard")" class="navbar-brand" style="margin-top:-3px;">
+                    <img src="@Url.Content("~/Images/logo.png")" />
+                </a>
+            </div>            
+            @if (Session["sessUser"] != null) 
+            { 
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="float:right !important;">
+                        @if (Session["sessUser"] != null && (Session["sessUser"].ToString().Equals("admin") || Session["sessUser"].ToString().Equals("user")))
+                        {
+                            <li>@Html.ActionLink("[Devices]", "Index", "Devices")</li>
+                        }
+                        <li>@Html.ActionLink("[Logout]", "Logout", "Home")</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Locanix</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

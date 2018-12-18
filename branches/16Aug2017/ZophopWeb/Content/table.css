@@ -1,0 +1,13 @@
+﻿.tableHeader {
+    background-color: #E6E6E6;
+}
+
+.tableBorder {
+    border: solid;
+    border-width: 1px;
+    border-color: #E6E6E6;
+}
+
+.titleColor {
+    color: black;
+}

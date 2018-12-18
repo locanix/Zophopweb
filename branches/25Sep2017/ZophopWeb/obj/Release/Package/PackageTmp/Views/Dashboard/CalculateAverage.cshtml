@@ -1,0 +1,109 @@
+﻿
+<link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<style>
+    .huge {
+        font-size: 35px;
+    }
+
+    .widget {
+        /*display:none;*/
+    }
+
+    .panelFooter {
+        font-size: 16px;
+        text-align: center;
+        padding: 3px;
+        padding-left: 10px;
+    }
+
+    .panelFooterBlue {
+        background-color: #3d8ac9;
+    }
+
+    .panelFooterGreen {
+        background-color: #71C171;
+    }
+
+    .panelFooterOrange {
+        background-color: #F3BB70;
+    }
+
+    .panelFooterRed {
+        background-color: #DE6A67;
+    }
+</style>
+
+<br />
+<h3>Check the Average</h3>
+<br />
+<div style="clear:both;"></div>
+<div class="panel panel-default">    
+    <div class="panel-body">
+        <div class="dataTable_wrapper">            
+            <form name="averageform" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        Select Vehicle
+                        <select name="IMEI" class="form-control" value="@ViewBag.IMEI">
+                            <option value="All">All</option>
+                            @foreach (ZophopWeb.Models.tracker item in ViewBag.Vehicles)
+                            {
+                                <option value="@item.IMEI">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        Date Time Start From:
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" name="beginTime" value="@ViewBag.startdate" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        To Date Time End :
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" name="endTime" value="@ViewBag.enddate" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="col-md-3"><br/>
+                        <button class="form-control button btn-primary" type="submit">Calculate Average</button>
+                    </div>
+                    </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Minimum Transfer Rate (point/second)</div>
+                    <div class="panel-body">@ViewBag.Minimum</div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Average Transfer Rate Minimum Transfer Rate (point/second)</div>
+                    <div class="panel-body">@ViewBag.Average</div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Maximum Transfer Rate (point/second)</div>
+                    <div class="panel-body">@ViewBag.Maximum</div>
+                </div>
+            </form>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/d3.min.js"></script>
+<script src="~/Scripts/d3pie.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $("#datetimepicker1").datetimepicker({ format: 'DD/MM/YYYY HH:mm:ss' }); $("#datetimepicker2").datetimepicker({ format: 'DD/MM/YYYY HH:mm:ss'});
+</script>

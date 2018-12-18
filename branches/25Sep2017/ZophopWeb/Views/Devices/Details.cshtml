@@ -1,0 +1,55 @@
+﻿@model ZophopWeb.Models.tracker
+
+<br />
+<h3>Details</h3>
+<br />
+<div>
+    <h4>Device</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            Device IMEI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMEI)
+        </dd>
+
+        <dt>
+            Vehicle Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Comment
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            Group
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.servergroup)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("[Edit]", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("[Back to List]", "Index")
+</p>

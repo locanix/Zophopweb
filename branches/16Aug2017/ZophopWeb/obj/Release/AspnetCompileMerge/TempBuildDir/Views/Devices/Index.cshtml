@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ZophopWeb.Models.tracker>
+
+<br />
+<h3>Devices (Total: @ViewBag.DevicesCount)</h3>
+<br />
+<p>
+    @Html.ActionLink("[Add Device]", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Device IMEI</th>
+        <th>Vehicle Number</th>
+        <th>Comment</th>        
+        <th>Group</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMEI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.servergroup)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @if (Session["sessUser"].ToString().Equals("admin")) { 
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) @: |                                
+            }
+            @Html.ActionLink("Data Points", "Tracks", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

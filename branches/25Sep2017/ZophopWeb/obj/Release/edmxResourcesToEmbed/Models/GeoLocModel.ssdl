@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="geolocModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="curpos">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+    </Key>
+    <Property Name="TrackerID" Type="uint" Nullable="false" />
+    <Property Name="Time" Type="uint" Nullable="false" />
+    <Property Name="Lng" Type="float" Nullable="false" />
+    <Property Name="Lat" Type="float" Nullable="false" />
+    <Property Name="Status" Type="uint" Nullable="false" />
+    <Property Name="Speed" Type="usmallint" Nullable="false" />
+    <Property Name="Alt" Type="smallint" Nullable="false" />
+    <Property Name="IO" Type="blob" />
+    <Property Name="online" Type="bool" Nullable="false" />
+    <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="points">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Type="uint" Nullable="false" />
+    <Property Name="Time" Type="uint" Nullable="false" />
+    <Property Name="Lng" Type="float" Nullable="false" />
+    <Property Name="Lat" Type="float" Nullable="false" />
+    <Property Name="Status" Type="uint" Nullable="false" />
+    <Property Name="speed" Type="usmallint" Nullable="false" />
+    <Property Name="Alt" Type="smallint" Nullable="false" />
+    <Property Name="IO" Type="blob" />
+    <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+    <Property Name="Send" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trackerlastlocation">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="TrackerID" Type="uint" Nullable="false" />
+    <Property Name="IMEI" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Servergroup" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Time" Type="uint" Nullable="false" />
+    <Property Name="Lng" Type="float" Nullable="false" />
+    <Property Name="Lat" Type="float" Nullable="false" />
+    <Property Name="Status" Type="uint" Nullable="false" />
+    <Property Name="Speed" Type="usmallint" Nullable="false" />
+    <Property Name="Alt" Type="smallint" Nullable="false" />
+    <Property Name="GSMInfo" Type="ubigint" Nullable="false" />
+    <Property Name="Send" Type="uint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'def.geoloc.trackers' in the table 'FuelExpense' was excluded.-->
+  <EntityType Name="trackers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="uint" Nullable="false" />
+    <Property Name="IMEI" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="135" Nullable="false" />
+    <Property Name="IconID" Type="uint" Nullable="false" />
+    <Property Name="HistoryColor" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Period" Type="uint" Nullable="false" />
+    <Property Name="SleepPeriod" Type="uint" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="ParkRadius" Type="uint" Nullable="false" />
+    <Property Name="MinParkTime" Type="uint" Nullable="false" />
+    <Property Name="DaysToStore" Type="uint" Nullable="false" />
+    <Property Name="Enable" Type="bool" Nullable="false" />
+    <Property Name="Number" Type="uint" Nullable="false" />
+    <Property Name="MaxSpeed" Type="uint" Nullable="false" />
+    <Property Name="AlarmParkTime" Type="uint" Nullable="false" />
+    <Property Name="DeviceType" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FuelExpenseHr" Type="float" Nullable="false" />
+    <Property Name="CreateDate" Type="uint" Nullable="false" />
+    <Property Name="InstallDate" Type="uint" Nullable="false" />
+    <Property Name="StateNumber" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="InstallerName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="MinIdleTime" Type="uint" Nullable="false" />
+    <Property Name="MinDrain" Type="float" Nullable="false" />
+    <Property Name="Flags" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MinDrainSpeed" Type="float" Nullable="false" />
+    <Property Name="servergroup" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_curpos_1">
+    <End Role="trackers" Type="Self.trackers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="curpos" Type="Self.curpos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="trackers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="curpos">
+        <PropertyRef Name="TrackerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_points_1">
+    <End Role="trackers" Type="Self.trackers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="points" Type="Self.points" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trackers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="points">
+        <PropertyRef Name="TrackerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="geolocModelStoreContainer">
+    <EntitySet Name="curpos" EntityType="Self.curpos" Schema="geoloc" store:Type="Tables" />
+    <EntitySet Name="points" EntityType="Self.points" Schema="geoloc" store:Type="Tables" />
+    <EntitySet Name="trackerlastlocation" EntityType="Self.trackerlastlocation" Schema="geoloc" store:Type="Tables" />
+    <EntitySet Name="trackers" EntityType="Self.trackers" Schema="geoloc" store:Type="Tables" />
+    <AssociationSet Name="FK_curpos_1" Association="Self.FK_curpos_1">
+      <End Role="trackers" EntitySet="trackers" />
+      <End Role="curpos" EntitySet="curpos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_points_1" Association="Self.FK_points_1">
+      <End Role="trackers" EntitySet="trackers" />
+      <End Role="points" EntitySet="points" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

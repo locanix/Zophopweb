@@ -1,0 +1,62 @@
+﻿@model ZophopWeb.Models.tracker
+
+<br />
+<h3>Add Device</h3>
+<br />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div style="color:red;margin-bottom:15px;">@ViewBag.Message</div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="IMEI">Device IMEI</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IMEI)
+                @Html.ValidationMessageFor(model => model.IMEI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Name">Vehicle Number</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Comment">Comment</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment)
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="servergroup">Group</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.servergroup)
+                @Html.ValidationMessageFor(model => model.servergroup)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("[Back to List]", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
